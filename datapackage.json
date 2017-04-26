@@ -1,0 +1,281 @@
+{
+  "name": "sanctions",
+  "datapackage_version": "1.0-beta.18",
+  "title": "Sanctions",
+  "description": "Sanctions reports the total number and type of educational sanctions at the school district and state level.",
+  "version": "1.0",
+  "licenses": [{
+    "url": "http://opendatacommons.org/licenses/pddl/",
+    "name": "Open Data Commons Public Domain",
+    "version": "1.0",
+    "id": "odc-pddl"
+  }],
+  "sources": [{
+    "name": "ctsde",
+    "web": ""
+  }],
+  "author":[{
+    "name": "Jenna Daly",
+    "email": "jdaly@ctdata.org",
+    "web": "http://ctdata.org"
+  }],
+  "contributor": [],
+  "resources": [{
+    "path": "data/sanctions_2010-2016.csv",
+    "format": "csv",
+    "schema": {
+      "fields": [{
+          "name": "District",
+          "type": "string",
+          "dimension": false
+        }, {
+          "name": "FIPS",
+          "type": "string",
+          "dimension": false
+        }, {
+          "name": "Year",
+          "type": "string",
+          "dimension": false
+        }, {
+          "name": "Measure Type",
+          "type": "string",
+          "dimension": true,
+          "constraints": {
+			      "enum": [
+		        "Number"
+		        ]
+			    }
+        }, {
+          "name": "Variable",
+          "type": "string",
+          "dimension": true, 
+          "constraints": {
+		        "enum": [
+              "Sanctions"
+            ]
+			    }
+        }, {
+          "name": "Sanction Type",
+          "type": "string",
+          "dimension": true, 
+            "constraints": {
+		        "enum": [
+              "In-School Suspension",     
+              "Out-of-School Suspension",
+              "Expulsion",               
+              "Bus Suspension"
+            ]
+			    }
+        }, { 
+          "name": "Value",
+          "type": "number",
+          "dimension": false
+        }]
+      }
+    }
+  ],
+  "last_modified": "04/26/17",
+  "ckan_extras": {
+    "full_description": {
+      "ckan_name": "Full Description",
+      "value": "Data is reported as part of the Student Disciplinary Offense Data Collection (ED166). All offenses that result in In-school suspension, Out-of-school suspension, Bus suspension and Expulsion. In addition, all 'serious' incidents and those involving Alcohol, Drugs or Weapons must be reported regardless of the type of sanction imposed. All Bullying Incidents must also be reported. The data in the following reports are the counts of Sanctions and Incidents and are not Student Counts. Charter Districts have been entered as individual districts.",
+      "type": "string"
+    },
+    "suppression": {
+      "ckan_name": "Suppression",
+      "value": "Observations of less than 5 have been suppressed.",
+      "type": "string"
+    },
+    "technical_notes": {
+      "ckan_name": "Technical Notes",
+      "value": "",
+      "type": "string"
+    },
+    "socrata": {
+      "ckan_name": "Socrata",
+      "value": "False",
+      "type": "string"
+    },
+    "socrata_url": {
+      "ckan_name": "Socrata Dataset URL",
+      "value": "",
+      "type": "string"
+    },
+    "domain": {
+      "ckan_name": "Domain",
+      "value": "Education",
+      "type": "string"
+    },
+    "subdomain": {
+      "ckan_name": "Subdomain",
+      "value": "Student Behavior",
+      "type": "string"
+    },
+    "geography": {
+      "ckan_name": "Geography",
+      "value": "District",
+      "type": "string",
+      "constraints": {"enum": ["Town", "County", "Town/County", "District", "Other"]}
+    },
+    "frequency": {
+      "ckan_name": "Frequency",
+      "value": "Annual",
+      "type": "string"
+    },
+    "years_in_catalog": {
+      "ckan_name": "Years in Catalog",
+      "value": ["2009-2010", "2010-2011", "2011-2012", "2012-2013", "2013-2014", "2014-2015", "2015-2016"],
+      "type": "array"
+    },
+    "latest_year": {
+      "ckan_name": "Latest Year Available",
+      "value": "2015-2016",
+      "type": "string"
+    },
+    "disabled_views": {
+      "ckan_name": "Disabled Views",
+      "value": [],
+      "type": "array",
+      "constraints": {"enum": ["map", "table", "bar", "line"]}
+    },
+    "units": {
+      "ckan_name": "Units",
+      "value": {
+        "Number": "",
+        "Percent": "%"
+      }
+    },       
+    "expected_number_of_geographies": {
+		  "ckan_name": "Expected Number of Unique Geographies",
+		  "value": 205,
+		  "type": "string"
+		}, 
+    "default": {      
+      "ckan_name": "Default",
+			"value": {
+				"Measure Type": "Number",
+		 		"District": "Connecticut",
+		 		"Year": ["2015-2016"],
+		 		"Variable": "Sanctions"
+			},
+		  	"type": "object"
+    }  
+  },
+  "spot_checks": [
+    {
+      "type": "$lookup",
+      "filter": {    
+        "District": "Explorations District",
+        "Year": "2009-2010", 
+        "Variable": "Sanctions", 
+        "Sanction Type": "In-School Suspension",
+        "Measure Type": "Number" 
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "int",
+        "value": 10
+      } 
+    },     
+    {
+      "type": "$lookup",
+      "filter": {    
+        "District": "Putnam School District",
+        "Year": "2010-2011", 
+        "Variable": "Sanctions", 
+        "Sanction Type": "Out-of-School Suspension",
+        "Measure Type": "Number" 
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "int",
+        "value": 111
+      } 
+    },      
+    {
+      "type": "$lookup",
+      "filter": {    
+        "District": "Rocky Hill School District",
+        "Year": "2011-2012", 
+        "Variable": "Sanctions", 
+        "Sanction Type": "Expulsion",
+        "Measure Type": "Number" 
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "int",
+        "value": 0
+      } 
+    },      
+    {
+      "type": "$lookup",
+      "filter": {    
+        "District": "Connecticut",
+        "Year": "2012-2013", 
+        "Variable": "Sanctions", 
+        "Sanction Type": "Bus Suspension",
+        "Measure Type": "Number" 
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "int",
+        "value": 1322
+      } 
+    },      
+    {
+      "type": "$lookup",
+      "filter": {    
+        "District": "LEARN",
+        "Year": "2013-2014", 
+        "Variable": "Sanctions", 
+        "Sanction Type": "In-School Suspension",
+        "Measure Type": "Number" 
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "int",
+        "value": 143
+      } 
+    },     
+    {
+      "type": "$lookup",
+      "filter": {    
+        "District": "Hartford School District",
+        "Year": "2014-2015", 
+        "Variable": "Sanctions", 
+        "Sanction Type": "Out-of-School Suspension",
+        "Measure Type": "Number" 
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "int",
+        "value": 4883
+      } 
+    },     
+    {
+      "type": "$lookup",
+      "filter": {    
+        "District": "Windsor School District",
+        "Year": "2015-2016", 
+        "Variable": "Sanctions", 
+        "Sanction Type": "Expulsion",
+        "Measure Type": "Number" 
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "int",
+        "value": -9999
+      } 
+    }       
+  ],
+  "dimension_groups": [
+    {
+      "Sanction Type": [
+        "In-School Suspension",     
+        "Out-of-School Suspension",
+        "Expulsion",               
+        "Bus Suspension"    
+      ]
+    }
+  ]
+}
