@@ -1,6 +1,8 @@
 *.pyc
+.~lock*
 .cache/
 venv/
 env/
 .DS_Store
 .idea/
+.Rproj.user
