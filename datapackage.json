@@ -21,7 +21,7 @@
   }],
   "contributor": [],
   "resources": [{
-    "path": "data/sanctions_2010-2016.csv",
+    "path": "data/sanctions_2010-2017.csv",
     "format": "csv",
     "schema": {
       "fields": [{
@@ -74,7 +74,7 @@
       }
     }
   ],
-  "last_modified": "04/26/17",
+  "last_modified": "01/11/18",
   "ckan_extras": {
     "full_description": {
       "ckan_name": "Full Description",
@@ -124,12 +124,12 @@
     },
     "years_in_catalog": {
       "ckan_name": "Years in Catalog",
-      "value": ["2009-2010", "2010-2011", "2011-2012", "2012-2013", "2013-2014", "2014-2015", "2015-2016"],
+      "value": ["2009-2010", "2010-2011", "2011-2012", "2012-2013", "2013-2014", "2014-2015", "2015-2016", "2016-2017"],
       "type": "array"
     },
     "latest_year": {
       "ckan_name": "Latest Year Available",
-      "value": "2015-2016",
+      "value": "2016-2017",
       "type": "string"
     },
     "disabled_views": {
@@ -155,7 +155,7 @@
 			"value": {
 				"Measure Type": "Number",
 		 		"District": "Connecticut",
-		 		"Year": ["2015-2016"],
+		 		"Year": ["2016-2017"],
 		 		"Variable": "Sanctions"
 			},
 		  	"type": "object"
@@ -266,7 +266,22 @@
         "number type": "int",
         "value": -9999
       } 
-    }       
+    }, 
+    {
+      "type": "$lookup",
+      "filter": {    
+        "District": "Cromwell School District",
+        "Year": "2016-2017", 
+        "Variable": "Sanctions", 
+        "Sanction Type": "Out-of-School Suspension",
+        "Measure Type": "Number" 
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "int",
+        "value": 41
+      } 
+    }
   ],
   "dimension_groups": [
     {
