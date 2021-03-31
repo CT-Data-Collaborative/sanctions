@@ -15,13 +15,13 @@
     "web": ""
   }],
   "author":[{
-    "name": "Jenna Daly",
-    "email": "jdaly@ctdata.org",
-    "web": "http://ctdata.org"
+    "name": "CTData Collaborative",
+    "email": "info@ctdata.org",
+    "web": "https://ctdata.org"
   }],
   "contributor": [],
   "resources": [{
-    "path": "data/sanctions_2010-2017.csv",
+    "path": "data/sanctions_2010-2020.csv",
     "format": "csv",
     "schema": {
       "fields": [{
@@ -74,11 +74,11 @@
       }
     }
   ],
-  "last_modified": "01/11/18",
+  "last_modified": "03/31/2021",
   "ckan_extras": {
     "full_description": {
       "ckan_name": "Full Description",
-      "value": "Data is reported as part of the Student Disciplinary Offense Data Collection (ED166). All offenses that result in In-school suspension, Out-of-school suspension, Bus suspension and Expulsion. In addition, all 'serious' incidents and those involving Alcohol, Drugs or Weapons must be reported regardless of the type of sanction imposed. All Bullying Incidents must also be reported. The data in the following reports are the counts of Sanctions and Incidents and are not Student Counts. Charter Districts have been entered as individual districts.",
+      "value": "Data is reported as part of the Student Disciplinary Offense Data Collection (ED166). All offenses that result in In-school suspension, Out-of-school suspension, Bus suspension and Expulsion. In addition, all 'serious' incidents and those involving Alcohol, Drugs or Weapons must be reported regardless of the type of sanction imposed. All Bullying Incidents must also be reported. The data in the following reports are the counts of Sanctions and Incidents and are not Student Counts. Charter Districts have been entered as individual districts. Note: In the 2019-20 school year, due to the COVID-19 pandemic, in-person classes were cancelled in mid-March; all districts switched to fully remote instruction for the remainder of the school year.",
       "type": "string"
     },
     "suppression": {
@@ -124,12 +124,12 @@
     },
     "years_in_catalog": {
       "ckan_name": "Years in Catalog",
-      "value": ["2009-2010", "2010-2011", "2011-2012", "2012-2013", "2013-2014", "2014-2015", "2015-2016", "2016-2017"],
+      "value": ["2009-2010", "2010-2011", "2011-2012", "2012-2013", "2013-2014", "2014-2015", "2015-2016", "2016-2017", "2017-2018", "2018-2019", "2019-2020"],
       "type": "array"
     },
     "latest_year": {
       "ckan_name": "Latest Year Available",
-      "value": "2016-2017",
+      "value": "2019-2020",
       "type": "string"
     },
     "disabled_views": {
@@ -155,7 +155,7 @@
 			"value": {
 				"Measure Type": "Number",
 		 		"District": "Connecticut",
-		 		"Year": ["2016-2017"],
+		 		"Year": ["2019-2020"],
 		 		"Variable": "Sanctions"
 			},
 		  	"type": "object"
